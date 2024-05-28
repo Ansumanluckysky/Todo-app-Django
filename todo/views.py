@@ -34,3 +34,9 @@ def delete_task(request,pk):
     get_task=get_object_or_404(Task, pk=pk)
     get_task.delete()
     return redirect('home')
+
+def mark_as_undone(request, pk):
+    task=get_object_or_404(Task, pk=pk)
+    task.is_completed=False
+    task.save()
+    return redirect('home')
